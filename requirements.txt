@@ -3,3 +3,6 @@ nltk~=3.8.1
 spacy~=3.6.1
 pytextrank~=3.2.5
 transformers~=4.33.2
+beautifulsoup4~=4.12.2
+torch~=2.0.1
+colorama~=0.4.6
