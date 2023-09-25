@@ -1,6 +1,7 @@
 import openai
 from Summariser.config import Config
 
+
 class ChatGPTSummariser:
     def __init__(self, prompt, text):
         self.prompt = prompt
