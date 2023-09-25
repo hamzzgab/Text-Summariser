@@ -1,11 +1,26 @@
-from BaselineSummariser import TextScrapper, TextProcessor
+from Summariser import WebScrapper, TextProcessor, PDFScrapper
+from Summariser import ChatGPTSummariser
 
-# text = """Peter and Elizabeth took a taxi to attend the night party in the city. While in the party, Elizabeth
-# collapsed and was rushed to the hospital. Since she was diagnosed with a brain injury, the doctor told Peter to stay
-# besides her until she gets well. Therefore, Peter stayed with her at the hospital for 3 days without leaving."""
+# ABSTRACTIVE SUMMARISER
+filename = 'trial'
+ps = PDFScrapper(filename=filename)
+
+pn, pm = 3, 7
+ps.get_text_from_pages(pn, pm)
+
+ps.filename = f'{filename}-{pn}_{pm}'
+text = ps.clean_text()
+ps.store_text(text)
+
+chat_gpt_summariser = ChatGPTSummariser(prompt="Summarise the following text:",
+                                        text=text)
+response = chat_gpt_summariser.get_response()
+print(response)
 
 
-ts = TextScrapper(url='https://en.wikipedia.org/wiki/20th_century')
+# EXTRACTIVE SUMMARISER
+"""
+ts = WebScrapper(url='https://en.wikipedia.org/wiki/20th_century')
 ts.fetch_data()
 text = ts.get_content()
 
@@ -15,5 +30,5 @@ tp.calc_sentence_score()
 average_score = tp.get_average_score()
 summary = tp.get_summary(threshold=average_score)
 
-print('SUMMARY')
 print(summary)
+"""

@@ -6,3 +6,6 @@ transformers~=4.33.2
 beautifulsoup4~=4.12.2
 torch~=2.0.1
 colorama~=0.4.6
+pdfquery~=0.4.3
+pypdf2~=3.0.1
+openai~=0.28.0

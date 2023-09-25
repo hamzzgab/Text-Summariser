@@ -1,4 +1,4 @@
-from BaselineSummariser.config import Config
+from Summariser.config import Config
 
 import logging
 
@@ -7,6 +7,10 @@ from nltk.corpus import stopwords
 from string import punctuation
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize, sent_tokenize
+
+
+# logging.basicConfig(filename=Config.LOGS / 'preprocessing.log', filemode='w', level=logging.DEBUG,
+#                     format='%(asctime)s [%(levelname)s]: %(message)s')
 
 
 nltk.download('stopwords')
@@ -128,7 +132,3 @@ class TextProcessor:
     @sentence_score.setter
     def sentence_score(self, val):
         self._sentence_score = val
-
-
-logging.basicConfig(filename=Config.LOGS / 'TextProcessor.log', filemode='w', level=logging.DEBUG,
-                    format='%(asctime)s [%(levelname)s]: %(message)s')
